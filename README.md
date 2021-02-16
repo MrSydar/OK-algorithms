@@ -31,6 +31,6 @@ Witamy w menu!!
  6 - kolorowanie (algorytm Browna)
 Wybierz program:
 ```
-After choosing the algorithm you have to proceed by program instructions.
+After choosing the algorithm you have to follow program instructions.
 
 Hope you enjoy and thanks for using our OK-exam app. :grin:
