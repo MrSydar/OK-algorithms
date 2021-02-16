@@ -9,10 +9,14 @@ def infSum(a: int, b: int):
 def infMin(a: int, b: int):
     if a < 0 and b < 0:
         return -1
+    elif a < 0:
+        return b
     elif b < 0:
         return a
-    else:
+    elif a > b:
         return b
+    else:
+        return a
 
 def getVal(table: list, i: int, j: int, w: list, s: list):
     if w[i - 1] > j:
