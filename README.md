@@ -19,7 +19,7 @@ python main.py #in powershell
 ```
 
 ## Usage
-After you open our program you will see a nice menu, where you can choose your desired algorithm.
+After opening our program you will see a nicely done menu, where you can choose your desired algorithm.
 ```txt
 Witamy w menu!!
  0 - Wyjscie
@@ -31,6 +31,6 @@ Witamy w menu!!
  6 - kolorowanie (algorytm Browna)
 Wybierz program:
 ```
-After closing the algorithm you have to proceed by program instructions.
+After choosing the algorithm you have to proceed by program instructions.
 
 Hope you enjoy and thanks for using our OK-exam app. :grin:
