@@ -86,10 +86,10 @@ def upperlower(fromNode: int, toNode: int, graphLowerBound: list, graphUpperBoun
         for x in range(n - 2):
             graph[y + 1][x + 1] = graphUpperBound[y][x] - graphLowerBound[y][x]
             
-        maxLowerOut = max(graphLowerBound[y])
-        graph[y + 1][-1] = maxLowerOut
-        maxUpperInner = max([graphLowerBound[i][y] for i in range(n - 2)])
-        graph[0][y + 1] = maxUpperInner
+        lowerOut = sum(graphLowerBound[y])
+        graph[y + 1][-1] = lowerOut
+        upperInner = sum([graphLowerBound[i][y] for i in range(n - 2)])
+        graph[0][y + 1] = upperInner
 
     graph[-2][1] = float('inf')
 
@@ -113,25 +113,23 @@ def upperlower(fromNode: int, toNode: int, graphLowerBound: list, graphUpperBoun
 
 
 
-myNodeNames = ['s', '1', '2', '3', 't']
-#             s  1  2  3  t
-myPriority = [0, 3, 1, 2, -1]
+myNodeNames = ['s', 'A', 'B', 't']
+#             s  A  B  t
+myPriority = [0, 1, 2, -1]
 myGraphLowerBound = [
-# fr:s  1  2  3  t     to
-    [0, 2, 0, 0, 0], # s
-    [0, 0, 0, 0, 0], # 1
-    [0, 0, 0, 3, 0], # 2
-    [0, 0, 0, 0, 2], # 3
-    [0, 0, 0, 0, 0]  # t
+# fr:s  A  B  t     to
+    [0, 0, 1, 0], # s
+    [0, 0, 0, 2], # A
+    [0, 0, 0, 2], # B
+    [0, 0, 0, 0]  # t
 ]
 myGraphUpperBound = [
-# fr:s  1  2  3  t     to
-    [0, 4, 5, 0, 0], # s
-    [0, 0, 0, 1, 3], # 1
-    [0, 0, 0, 4, 0], # 2
-    [0, 0, 0, 0, 6], # 3
-    [0, 0, 0, 0, 0]  # t
+# fr:s  A  B  t     to
+    [0, 1, 2, 0], # s
+    [0, 0, 0, 3], # A
+    [0, 0, 0, 3], # B
+    [0, 0, 0, 0]  # t
 ]
 
-myDeltaSum = upperlower(0, 6, myGraphLowerBound, myGraphUpperBound, myPriority, myNodeNames)
+myDeltaSum = upperlower(0, 3, myGraphLowerBound, myGraphUpperBound, myPriority, myNodeNames)
 print('Max flow is {}'.format(myDeltaSum))
