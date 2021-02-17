@@ -71,17 +71,31 @@ def dinic(fromNode: int, toNode: int, graph: list, nodePriority: list, nodeNames
         else:
             return deltaSum
 
-myNodeNames = ['s', '1', '2', '3', '4', 't']
-#             s  1  2  3  4  t
-myPriority = [0, 1, 2, 3, 4, -1]
+# myNodeNames = ['s', '1', '2', '3', '4', 't']
+# #             s  1  2  3  4  t
+# myPriority = [0, 1, 2, 3, 4, -1]
+# myGraph = [
+# # fr:s  1  2  3  4  t      to
+#     [0, 1, 1, 0, 0, 0],  # s
+#     [0, 0, 0, 1, 1, 0],  # 1
+#     [0, 0, 0, 1, 0, 0],  # 2
+#     [0, 0, 0, 0, 0, 1],  # 3
+#     [0, 0, 0, 0, 0, 1],  # 4
+#     [0, 0, 0, 0, 0, 0]   # t
+# ]
+
+myNodeNames = ['s', '2', '3', '4', '5', '6', 't']
+#             s  2  3  4  5  6  t
+myPriority = [0, 4, 2, 5, 3, 2, -1] # priorytet obrania wierszchołków przy budowaniu ścieżki. Im mniejszy tym lepszy. (użyteczne np. jeżeli ważna jest kolejność obrania krawędzi). Nie wpływa na ostateczny wynik, tylko na ścieżki.
 myGraph = [
-# fr:s  1  2  3  4  t      to
-    [0, 1, 1, 0, 0, 0],  # s
-    [0, 0, 0, 1, 1, 0],  # 1
-    [0, 0, 0, 1, 0, 0],  # 2
-    [0, 0, 0, 0, 0, 1],  # 3
-    [0, 0, 0, 0, 0, 1],  # 4
-    [0, 0, 0, 0, 0, 0]   # t
+# fr:s  2  3  4  5  6  t   to
+    [0, 4, 0, 5, 1, 0, 1],  # s
+    [0, 0, 2, 0, 3, 0, 0],  # 2
+    [0, 0, 0, 0, 0, 0, 4],  # 3
+    [0, 0, 0, 0, 1, 4, 0],  # 4
+    [0, 0, 1, 0, 0, 2, 3],  # 5
+    [0, 0, 0, 0, 0, 0, 6],  # 6
+    [0, 0, 0, 0, 0, 0, 0]   # t
 ]
 
 myDeltaSum = dinic(0, len(myGraph) - 1, myGraph, myPriority, myNodeNames)
