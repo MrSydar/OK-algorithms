@@ -173,7 +173,7 @@ myNodeNames = ['s', '2', '3', '4', 't']
 #             s  2  3  4  t
 myPriority = [0, 1, 4, 2, -1]
 myGraphLowerBound = [
-# fr:s  2  3  4  t     to
+# to:s  2  3  4  t     from
     [0, 2, 1, 0, 0], # s
     [0, 0, 0, 1, 1], # 2
     [0, 2, 0, 1, 0], # 3
@@ -181,7 +181,7 @@ myGraphLowerBound = [
     [0, 0, 0, 0, 0]  # t
 ]
 myGraphUpperBound = [
-# fr:s  2  3  4  t     to
+# to:s  2  3  4  t     from
     [0, 3, 5, 0, 0], # s
     [0, 0, 0, 2, 7], # 2
     [0, 5, 0, 3, 0], # 3
@@ -189,24 +189,4 @@ myGraphUpperBound = [
     [0, 0, 0, 0, 0]  # t
 ]
 myDeltaSum = upperlower(0, 4, myGraphLowerBound, myGraphUpperBound, myPriority, myNodeNames)
-
-# myNodeNames = ['s', 'A', 'B', 't']
-# #             s  A  B  t
-# myPriority = [0, 1, 2, -1]
-# myGraphLowerBound = [
-# #TO :s  A  B  t     from
-#     [0, 0, 1, 0], # s
-#     [0, 0, 0, 2], # A
-#     [0, 0, 0, 2], # B
-#     [0, 0, 0, 0]  # t
-# ]
-# myGraphUpperBound = [
-# #TO :s  A  B  t     from
-#     [0, 1, 2, 0], # s
-#     [0, 0, 0, 3], # A
-#     [0, 0, 0, 3], # B
-#     [0, 0, 0, 0]  # t
-# ]
-# myDeltaSum = upperlower(0, 4, myGraphLowerBound, myGraphUpperBound, myPriority, myNodeNames)
-
 print('Max flow is {}'.format(myDeltaSum))

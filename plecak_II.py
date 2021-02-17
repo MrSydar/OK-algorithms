@@ -66,7 +66,7 @@ class plecak:
         for i in range(len(table)):
             print('\033[94m'+'{}\t'.format(i)+'\033[0m', end='')
             for j in range(len(table[0])):
-                print('∞\t' if table[i][j] == -1 else '\033[91m'+'{}\t'.format(table[i][j]*-1)+'\033[0m' if table[i][j] < -1 else '{}\t'.format(table[i][j]), end='')
+                print('∞ \t' if table[i][j] == -1 else '\033[91m'+'{} \t'.format(table[i][j]*-1)+'\033[0m' if table[i][j] < -1 else '{} \t'.format(table[i][j]), end='')
             print()
 
     def __init__(self, B, W, S):
