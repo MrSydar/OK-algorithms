@@ -170,20 +170,44 @@ def taskingFull(n: int, r: list, d: list, p: list, procNum: list):
     for i in range(procNum):
         solution.append([-1] * (max(e) - min(e)))
     
-    for t in range(n):
-        for rg in range(m - (2 + n)):
-            for i in range(graphUsed[t + 1][1 + n + rg]):
-                proc = 0
-                shift = 0
+    for rg in range(1 + n, 1 + n + len(e) - 1):
+        # val index
+        wants = [[graphUsed[1 + t][rg], t] for t in range(n)]
+        wants = sorted(wants, key= lambda x: x[1], reverse=True)
+        wants = sorted(wants, key= lambda x: x[0], reverse=True)
+        # print(wants)
+        for t in range(n):
+            proc = 0
+            shift = 0
+            for _ in range(wants[t][0]):
                 while True:
-                    if solution[proc][e[rg] + shift] == -1:
-                        solution[proc][e[rg] + shift] = t
+                    # print('T{} -> [{};{}]\t proc: {}\t shift: {}'.format(wants[t][1], e[rg - 1 - n], e[rg - n], proc, shift))
+                    if solution[proc][shift + rg - 1 - n] == -1:
+                        # print('OK')
+                        solution[proc][shift + rg - 1 - n] = wants[t][1]
+                        shift = 0
+                        proc = 0
                         break
-                    elif e[rg] + shift < e[rg + 1] - 1:
+                    elif shift + rg - 1 - n < e[rg - n] - 1:
                         shift += 1
                     else:
                         proc += 1
                         shift = 0
+
+    # for t in range(n):
+    #     for rg in range(m - (2 + n)):
+    #         for i in range(graphUsed[t + 1][1 + n + rg]):
+    #             proc = 0
+    #             shift = 0
+    #             while True:
+    #                 if solution[proc][e[rg] + shift] == -1:
+    #                     solution[proc][e[rg] + shift] = t
+    #                     break
+    #                 elif e[rg] + shift < e[rg + 1] - 1:
+    #                     shift += 1
+    #                 else:
+    #                     proc += 1
+    #                     shift = 0
     
     for row in range(len(solution)):
         print('M{}'.format(row+1),end='')
