@@ -93,7 +93,8 @@ def dinic(fromNode: int, toNode: int, graph: list, graphUsed: list, nodePriority
                         print('{} -> {}'.format(nodeNames[i], nodeNames[x]))
             print('\033[0m')
 
-            return deltaSum
+            print('DeltaSum: {}'.format(deltaSum))
+            return sum([x for x in graphUsed[0]])
 
 def upperlower(fromNode: int, toNode: int, graphLowerBound: list, graphUpperBound: list, nodePriority: list, nodeNames: list):
     n = len(nodePriority) + 2
@@ -182,8 +183,6 @@ def upperlower(fromNode: int, toNode: int, graphLowerBound: list, graphUpperBoun
     d2 = dinic(0, n - 1, newGraph, graphUsed, nodePriority[1:-1], nodeNames[1:-1])
     print('Delta z drugiej sieci: {}\n'.format(d2))
 
-    return d1 + d2
-
 
 
 myNodeNames = ['s', '2', '3', '4', 't']
@@ -205,5 +204,4 @@ myGraphUpperBound = [
     [0, 0, 0, 0, 5], # 4
     [0, 0, 0, 0, 0]  # t
 ]
-myDeltaSum = upperlower(0, 4, myGraphLowerBound, myGraphUpperBound, myPriority, myNodeNames)
-print('Max flow is {}'.format(myDeltaSum))
+upperlower(0, len(myGraphLowerBound) - 1, myGraphLowerBound, myGraphUpperBound, myPriority, myNodeNames)

@@ -75,7 +75,8 @@ def dinic(fromNode: int, toNode: int, graph: list, graphUsed: list, nodePriority
                         print('{} -> {}'.format(nodeNames[i], nodeNames[x]))
             print('\033[0m')
 
-            return deltaSum
+            print('DeltaSum: {}'.format(deltaSum))
+            return sum([x for x in graphUsed[0]])
 
 def tasking2Processors(w: list, c: list):
     n = len(w) + 2
@@ -98,8 +99,30 @@ def tasking2Processors(w: list, c: list):
     for i in range(n):
         graphUsed.append([0] * n)
     
+    print('GRAF:\033[91m')
+    for i in range(n):
+        print('{}\t'.format(nodeNames[i]), end='')
+    print('\033[0m')
+
+    for i in range(n):
+        for x in range(n):
+            print('{}\t'.format(graph[i][x]), end='')
+        print('\033[91m{}\033[0m'.format(nodeNames[i]))
+    print()
+
     delta = dinic(0, n - 1, graph, graphUsed, nodePriority, nodeNames)
     print('Delta: {}\033[92m\n'.format(delta))
+
+    print('WYKORZYSTANO:\033[91m')
+    for i in range(n):
+        print('{}\t'.format(nodeNames[i]), end='')
+    print('\033[0m')
+
+    for i in range(n):
+        for x in range(n):
+            print('{}\t'.format(graphUsed[i][x]), end='')
+        print('\033[91m{}\033[0m'.format(nodeNames[i]))
+    print()
 
     print('Solution: ')
     for i in range(1, n - 1):
@@ -115,20 +138,24 @@ def tasking2Processors(w: list, c: list):
 
 W = [
 #   P1  P2
-    [2, 10],    #T1
-    [3, 8],     #T2
-    [10, 1]     #T3
+    [3, 5], #T1
+    [8, 2], #T2
+    [4, 11],#T3
+    [1, 9],#T4
+    [7, 6] #T5
 ]
 
 # indexes from ZERO !
 C = [
 #   Ta  Tb  cValue
-    [0, 1, 1],  #C1,2=1 (T1 -> T2 = 1)
-    [1, 0, 1],  #C2,1=1
-    [0, 2, 1],  #...
-    [2, 0, 1],
-    [1, 2, 1],
-    [2, 1, 1]
+    [0, 1, 2],  #C1,2=1 (T1 -> T2 = 1)
+    [1, 0, 2],
+    [1, 2, 3],
+    [2, 1, 3],
+    [2, 3, 1],
+    [3, 2, 1],
+    [3, 4, 4],
+    [4, 3, 4]
 ]
 
 tasking2Processors(W, C)

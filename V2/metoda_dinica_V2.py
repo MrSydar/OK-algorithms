@@ -97,7 +97,8 @@ def dinic(fromNode: int, toNode: int, graph: list, nodePriority: list, nodeNames
                         print('{} -> {}'.format(nodeNames[i], nodeNames[x]))
             print('\033[0m')
 
-            return deltaSum
+            print('DeltaSum: {}'.format(deltaSum))
+            return sum([x for x in graphUsed[0]])
 
 myNodeNames = ['s', '2', '3', '4', '5', 't']
 #             s  2  3  4  5  t

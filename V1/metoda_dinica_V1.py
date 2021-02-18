@@ -78,8 +78,9 @@ def dinic(fromNode: int, toNode: int, graph: list, nodePriority: list, nodeNames
                     if graph[i][x] != 0 and (graph[i][x] - graphUsed[i][x]) == 0 and i != x:
                         print('{} -> {}'.format(nodeNames[i], nodeNames[x]))
             print('\033[0m')
-
-            return deltaSum
+            
+            print('DeltaSum: {}'.format(deltaSum))
+            return sum([x for x in graphUsed[0]])
 
 myNodeNames = ['s', '2', '3', '4', 't']
 #             s  2  3  4  t

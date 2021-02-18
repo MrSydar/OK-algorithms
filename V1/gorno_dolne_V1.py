@@ -59,15 +59,13 @@ def dinic(fromNode: int, toNode: int, graph: list, graphUsed: list, nodePriority
         if getPath(fromNode, toNode, graph, nodePriority, graphUsed, [False] *  n, path):
             path.reverse()
             delta = applyPath(0, maxsize, path, graph, graphUsed)
-
+            deltaSum += delta
             # print section [can be safely removed]
             print('Path: \033[94m ', end='')
             for i in range(len(path)):
                 print(' {}\t'.format(nodeNames[path[i]]), end='')
             print('\033[0m delta = {}'.format(delta))
             # end: print section
-
-            deltaSum += delta
         else:
             print('\nNasycone krawedzi: \033[92m')
             for i in range(n):
@@ -75,8 +73,9 @@ def dinic(fromNode: int, toNode: int, graph: list, graphUsed: list, nodePriority
                     if graph[i][x] != 0 and (graph[i][x] - graphUsed[i][x]) == 0 and i != x:
                         print('{} -> {}'.format(nodeNames[i], nodeNames[x]))
             print('\033[0m')
-
-            return deltaSum
+            
+            print('DeltaSum: {}'.format(deltaSum))
+            return sum([x for x in graphUsed[0]])
 
 def upperlower(fromNode: int, toNode: int, graphLowerBound: list, graphUpperBound: list, nodePriority: list, nodeNames: list):
     n = len(nodePriority) + 2
@@ -165,28 +164,26 @@ def upperlower(fromNode: int, toNode: int, graphLowerBound: list, graphUpperBoun
     d2 = dinic(0, n - 1, newGraph, graphUsed, nodePriority[1:-1], nodeNames[1:-1])
     print('Delta z drugiej sieci: {}\n'.format(d2))
 
-    return d1 + d2
 
-
-
-myNodeNames = ['s', '2', '3', '4', 't']
+myNodeNames = ['s', '2', '3', '4', '5', 't']
 #             s  2  3  4  t
-myPriority = [0, 1, 4, 2, -1]
+myPriority = [0, 1, 2, 3, 4, -1]
 myGraphLowerBound = [
-# to:s  2  3  4  t     from
-    [0, 2, 1, 0, 0], # s
-    [0, 0, 0, 1, 1], # 2
-    [0, 2, 0, 1, 0], # 3
-    [0, 0, 0, 0, 2], # 4
-    [0, 0, 0, 0, 0]  # t
+# to:s  1  2  3  4  t     from
+    [0, 2, 3, 0, 0, 0], # s
+    [0, 0, 0, 1, 1, 0], # 1
+    [0, 0, 0, 1, 0, 2], # 2
+    [0, 0, 0, 0, 3, 0], # 3
+    [0, 0, 0, 0, 0, 1], # 4
+    [0, 0, 0, 0, 0, 0]  # t
 ]
 myGraphUpperBound = [
-# to:s  2  3  4  t     from
-    [0, 3, 5, 0, 0], # s
-    [0, 0, 0, 2, 7], # 2
-    [0, 5, 0, 3, 0], # 3
-    [0, 0, 0, 0, 5], # 4
-    [0, 0, 0, 0, 0]  # t
+# to:s  1  2  3  4  t     from
+    [0, 6, 5, 0, 0, 0], # s
+    [0, 0, 0, 2, 3, 0], # 1
+    [0, 0, 0, 5, 0, 4], # 2
+    [0, 0, 0, 0, 5, 0], # 3
+    [0, 0, 0, 0, 0, 4], # 4
+    [0, 0, 0, 0, 0, 0]  # t
 ]
-myDeltaSum = upperlower(0, 4, myGraphLowerBound, myGraphUpperBound, myPriority, myNodeNames)
-print('Max flow is {}'.format(myDeltaSum))
+upperlower(0, len(myGraphLowerBound) - 1, myGraphLowerBound, myGraphUpperBound, myPriority, myNodeNames)
