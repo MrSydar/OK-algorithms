@@ -162,7 +162,7 @@ def taskingFull(n: int, r: list, d: list, p: list, procNum: list):
 
     print('Delta = {}'.format(delta))
 
-    if sum([graph[0][i] - graphUsed[0][i] for i in range(m)]) > 0:
+    if sum([graph[0][i] - graphUsed[0][i] for i in range(m)]) != 0:
         print('\033[91m Rozwiazania dla tego problemu nie istnieje! \033[0m')
         exit()
     
@@ -174,12 +174,16 @@ def taskingFull(n: int, r: list, d: list, p: list, procNum: list):
         for rg in range(m - (2 + n)):
             for i in range(graphUsed[t + 1][1 + n + rg]):
                 proc = 0
+                shift = 0
                 while True:
-                    if solution[proc][e[rg] + i] == -1:
-                        solution[proc][e[rg] + i] = t
+                    if solution[proc][e[rg] + shift] == -1:
+                        solution[proc][e[rg] + shift] = t
                         break
+                    elif e[rg] + shift < e[rg + 1] - 1:
+                        shift += 1
                     else:
                         proc += 1
+                        shift = 0
     
     for row in range(len(solution)):
         print('M{}'.format(row+1),end='')
@@ -198,10 +202,10 @@ M = 3
 # ilosc zadan
 N = 4
 # momenty gotowosci
-R = [0, 0, 1, 0]
+R = [0, 1, 1, 2]
 # deadlines
-D = [3, 5, 4, 2]
+D = [3, 3, 5, 4]
 # czas trwanie
-P = [4, 4, 3, 3]
+P = [3, 2, 4, 4]
 
 taskingFull(N, R, D, P, M)
