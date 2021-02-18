@@ -108,7 +108,7 @@ def taskingFull(n: int, r: list, d: list, p: list, procNum: list):
     print('2.')
     tmp = set()
     for i in range(n):
-        tmp1 = [r[i] - d[j] for j in range(n) if j != i]
+        tmp1 = [r[i] - d[j] for j in range(n)]
         for j in range(n - 1):
             tmp.add(tmp1[j])
         print(' r{}-dj = {}'.format(i, tmp1))
