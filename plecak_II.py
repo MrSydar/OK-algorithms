@@ -41,7 +41,7 @@ def plecak2(b: int, w: list, s: list):
             getVal(table, i, j, w, s)
 
     j = len(table[0]) - 1
-    while table[-1][j] > b:
+    while table[-1][j] == -1 or table[-1][j] > b:
         j -= 1
     sack = []
     backTrack(len(table) - 1, j, table, w, sack)
@@ -82,8 +82,8 @@ def printTable(table: list, sack: list):
                 print('∞ \t' if table[i][j] == -1 else '{} \t'.format(table[i][j]), end='')
         print()
     
-B = 14               #rozmiar plecaka
-W = [3, 4, 2, 6, 1]  #wartosci
-S = [5, 3, 2, 4, 3]  #rozmiary
+B = 10               #rozmiar plecaka
+W = [5, 3, 2, 4, 3]  #wartosci
+S = [3, 4, 2, 6, 1]  #rozmiary
 
 plecak2(B, W, S)
