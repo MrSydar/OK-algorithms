@@ -215,7 +215,7 @@ def taskingFull(n: int, r: list, d: list, p: list, procNum: list):
             print(color(solution[row][x]),end = '')
         print()
 
-    for i in range(min(e), max(e)):
+    for i in range(min(e), max(e) + 1):
         print('  {}'.format(i), end='')
     print()
 

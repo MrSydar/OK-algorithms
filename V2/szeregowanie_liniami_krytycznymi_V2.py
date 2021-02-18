@@ -233,7 +233,7 @@ def taskingFull(n: int, r: list, d: list, p: list, procNum: list):
             print(color(solution[row][x]),end = '')
         print()
 
-    for i in range(min(e), max(e)):
+    for i in range(min(e), max(e) + 1):
         print('  {}'.format(i), end='')
     print()
 
@@ -244,10 +244,10 @@ M = 3
 # ilosc zadan
 N = 4
 # momenty gotowosci
-R = [0, 1, 1, 2]
+R = [0, 1, 2, 0]
 # deadlines
-D = [3, 3, 5, 4]
+D = [4, 2, 4, 2]
 # czas trwanie
-P = [3, 2, 4, 4]
+P = [4, 2, 3, 3]
 
 taskingFull(N, R, D, P, M)
