@@ -99,8 +99,8 @@ def dinic(fromNode: int, toNode: int, graph: list, nodePriority: list, nodeNames
 
             return deltaSum
 
-myNodeNames = ['s', '1', '2', '3', 't']
-#             s  1  2  3  t
+myNodeNames = ['s', '2', '3', '4', '5', 't']
+#             s  2  3  4  5  t
 myPriority = [0, 1, 2, 3, -1] # priorytet obrania wierszchołków przy budowaniu ścieżki. Im mniejszy tym lepszy. (użyteczne np. jeżeli ważna jest kolejność obrania krawędzi). Nie wpływa na ostateczny wynik, tylko na ścieżki.
 myGraph = [
 # to:s  1  2  3  t      from

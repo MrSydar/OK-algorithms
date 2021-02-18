@@ -82,8 +82,8 @@ def printTable(table: list, sack: list):
                 print('∞ \t' if table[i][j] == -1 else '{} \t'.format(table[i][j]), end='')
         print()
     
-B = 8            #rozmiar plecaka
-W = [3,4,2,6,1]  #wartosci
-S = [5,3,2,4,3]  #rozmiary
+B = 14               #rozmiar plecaka
+W = [3, 4, 2, 6, 1]  #wartosci
+S = [5, 3, 2, 4, 3]  #rozmiary
 
 plecak2(B, W, S)

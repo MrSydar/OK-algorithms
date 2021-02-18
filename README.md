@@ -1,2 +1,3 @@
 # OK algorytmy by MrSydar
+## Postaw gwiazdeczkę :)
 Metoda Dinica V2 wybiera najmniejsze sciezki, ale zrobiona na szybko i nie jest dobrze przetestowana na BUGi. Po to istnieja dwie werscji algorytmu: z wybieraniem najtanszych sciezek (V2) i bez (poprzednia, V1). Najlepsze odpalic zadanie na dwoch skryptach i porownac wyniki (kolejnosc obrania sciezek moze byc inna, ale wyniki musza byc te same, jezeli nie, to lepsze wykorzystac wyniki z V1, ale recznie obliczyc kolejnosc sciezek). Wszystkie algorytmy ktore wykorzystuja dinica rowniez zmienione po tej samej logice.
